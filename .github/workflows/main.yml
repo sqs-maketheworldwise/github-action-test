@@ -24,6 +24,11 @@ jobs:
           ./scripts/log.sh $branch
         shell: bash
 
+      - name: Echo test
+        run: |
+          echo $branch
+          echo $parameter_key
+
       - name: Echo env variables
         run: |
           echo "Current branch: ${{ env.branch }}"
