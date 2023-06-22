@@ -28,6 +28,8 @@ jobs:
         run: |
           echo $branch
           echo $parameter_key
+          echo ${ branch }
+          echo ${{ parameter_key }}
 
       - name: Echo env variables
         run: |
