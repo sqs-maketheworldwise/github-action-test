@@ -8,7 +8,7 @@ on:
 env:
   test: test
   branch: ${{ github.head_ref || github.ref_name }}
-  parameter_key: /kevin/$branch
+  parameter_key: /${{ vars.MY_NAME }}/$branch
 
 jobs:
   deploy:
@@ -24,9 +24,13 @@ jobs:
           ./scripts/log.sh $branch
         shell: bash
 
-      - name: Echo
+      - name: Echo test
         run: |
-          echo "Test: " $test
+          echo "Test: " $test # not worked
+          echo "Test: " ${test}
+
+      - name: Echo env variables
+        run: |
           echo "Current branch: ${{env.branch}}"
           echo "Parameter key: ${{env.parameter_key}}"
 
