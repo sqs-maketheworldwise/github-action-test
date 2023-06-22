@@ -6,6 +6,7 @@ on:
       - stage
 
 env:
+  test: test
   branch: ${{ github.head_ref || github.ref_name }}
   parameter_key: /kevin/$branch
 
@@ -25,6 +26,7 @@ jobs:
 
       - name: Echo
         run: |
+          echo "Test: " $test
           echo "Current branch: ${{env.branch}}"
           echo "Parameter key: ${{env.parameter_key}}"
 
