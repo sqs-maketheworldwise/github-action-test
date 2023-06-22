@@ -7,6 +7,7 @@ on:
 
 env:
   branch: ${{ github.head_ref || github.ref_name }}
+  parameter_key: /kevin/$branch
 
 jobs:
   deploy:
@@ -24,7 +25,8 @@ jobs:
 
       - name: Echo
         run: |
-          echo $branch/hello/world
+          echo "Current branch: ${{env.branch}}"
+          echo "Parameter key: ${{env.parameter_key}}"
 
       - name: Commit and push
         run: |
