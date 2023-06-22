@@ -27,11 +27,11 @@ jobs:
       - name: Echo test
         run: |
           echo "Test1: " $test
-          echo "Test2: " ${ test }
-          echo "Test3: " ${{ test }}
+          echo "Test2: " ${test}
+          echo "Test3: " ${{test}}
           echo "Test4: $test"
-          echo "Test5: ${ test }"
-          echo "Test6: ${{ test }}"
+          echo "Test5: ${test}"
+          echo "Test6: ${{test}}"
 
       - name: Echo env variables
         run: |
