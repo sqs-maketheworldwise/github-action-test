@@ -1,0 +1,31 @@
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - stage
+
+env:
+  BRANCH: ${{ github.head_ref || github.ref_name }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run script
+        run: |
+          chmod +x ./scripts/log.sh
+          ./scripts/log.sh ${{ env.BRANCH }}
+        shell: bash
+
+      - name: Commit and push
+        run: |
+          git add .
+          git config --global user.email "maketheworldwise@squares.ai"
+          git config --global user.name "sqs-maketheworldwise"
+          git commit -am "log"
+          git push
