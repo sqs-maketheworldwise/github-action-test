@@ -13,4 +13,4 @@ fi
 
 cd $current_year
 
-echo -e Github actions branch `date` \\n >> $output_file
+echo -e Github actions branch: $branch (`date`) \\n >> $output_file

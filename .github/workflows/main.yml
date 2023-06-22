@@ -19,7 +19,7 @@ jobs:
       - name: Run script
         run: |
           chmod +x ./scripts/log.sh
-          ./scripts/log.sh ${{ env.BRANCH }}
+          ./scripts/log.sh $BRANCH
         shell: bash
 
       - name: Commit and push
