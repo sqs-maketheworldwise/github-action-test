@@ -6,7 +6,7 @@ on:
       - stage
 
 env:
-  test: test
+  test: hello
   branch: ${{ github.head_ref || github.ref_name }}
   parameter_key: /${{ vars.MY_NAME }}/$branch
 
@@ -26,13 +26,17 @@ jobs:
 
       - name: Echo test
         run: |
-          echo "Test: " $test # not worked
-          echo "Test: " ${test}
+          echo "Test1: " $test
+          echo "Test2: " ${ test }
+          echo "Test3: " ${{ test }}
+          echo "Test4: $test"
+          echo "Test5: ${ test }"
+          echo "Test6: ${{ test }}"
 
       - name: Echo env variables
         run: |
-          echo "Current branch: ${{env.branch}}"
-          echo "Parameter key: ${{env.parameter_key}}"
+          echo "Current branch: ${{ env.branch }}"
+          echo "Parameter key: ${{ env.parameter_key }}"
 
       - name: Commit and push
         run: |
