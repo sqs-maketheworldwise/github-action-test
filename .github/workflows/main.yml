@@ -6,7 +6,7 @@ on:
       - stage
 
 env:
-  BRANCH: ${{ github.head_ref || github.ref_name }}
+  branch: ${{ github.head_ref || github.ref_name }}
 
 jobs:
   deploy:
@@ -19,8 +19,12 @@ jobs:
       - name: Run script
         run: |
           chmod +x ./scripts/log.sh
-          ./scripts/log.sh $BRANCH
+          ./scripts/log.sh $branch
         shell: bash
+
+      - name: Echo
+        run: |
+          echo $branch/hello/world
 
       - name: Commit and push
         run: |
