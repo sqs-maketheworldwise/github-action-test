@@ -8,7 +8,7 @@ on:
 env:
   test: hello
   branch: ${{ github.head_ref || github.ref_name }}
-  parameter_key: /${{ vars.MY_NAME }}/${{ env.branch }}
+  parameter_key: /${{ vars.MY_NAME }}/$branch
 
 jobs:
   deploy:
@@ -17,12 +17,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Run script
-        run: |
-          chmod +x ./scripts/log.sh
-          ./scripts/log.sh $branch
-        shell: bash
 
       # echo ${ branch } not worked
       # echo ${{ branch }} not worked
@@ -35,6 +29,12 @@ jobs:
         run: |
           echo "Current branch: ${{ env.branch }}"
           echo "Parameter key: ${{ env.parameter_key }}"
+
+      - name: Run script
+        run: |
+          chmod +x ./scripts/log.sh
+          ./scripts/log.sh ${{ env.branch }}
+        shell: bash
 
       - name: Commit and push
         run: |
