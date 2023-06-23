@@ -9,6 +9,7 @@ env:
   test: hello
   branch: ${{ github.head_ref || github.ref_name }}
   parameter_key: /${{ vars.MY_NAME }}/$branch
+  zip_name: test-$branch-shell.zip
 
 jobs:
   deploy:
@@ -29,6 +30,7 @@ jobs:
         run: |
           echo "Current branch: ${{ env.branch }}"
           echo "Parameter key: ${{ env.parameter_key }}"
+          echo "Zip name: ${{ env.zip_name }}"
 
       - name: Run script
         run: |
