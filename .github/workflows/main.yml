@@ -7,7 +7,7 @@ on:
 
 env:
   test: hello
-  branch: ${{ github.head_ref || github.ref_name }}
+  branch: ${{ (github.head_ref || github.ref_name) == 'main' && '' || (github.head_ref || github.ref_name) }}
   parameter_key: /${{ vars.MY_NAME }}/$branch # kevin/(main|dev|stage)
   zip_name: test-$branch-shell.zip
 
