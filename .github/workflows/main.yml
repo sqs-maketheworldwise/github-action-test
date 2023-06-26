@@ -8,7 +8,7 @@ on:
 env:
   test: hello
   branch: ${{ github.head_ref || github.ref_name }}
-  is_main: $branch == 'main'
+  is_main: ${{ $branch == 'main' }}
   parameter_key: /${{ vars.MY_NAME }}/$branch # kevin/(main|dev|stage)
   zip_name: test-$branch-shell.zip
 
