@@ -35,6 +35,7 @@ jobs:
         run: |
           echo "Current branch: ${{ env.branch }}"
           echo "Parameter key: ${{ env.parameter_key }}"
+          echo "Group Name: ${{ env.group_name }}"
           echo "Zip name: ${{ env.zip_name }}"
 
       - name: Run script
