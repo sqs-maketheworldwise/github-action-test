@@ -27,9 +27,9 @@ jobs:
           echo $parameter_key
 
       - name: Re-define group_name
-        if: ${{ env.branch != 'main' }}
+        if: ${{ env.branch == 'main' }}
         run: |
-          echo "hello world"
+          echo "group_name=main-branch" >> $GITHUB_ENV
 
       - name: Echo env variables
         run: |
