@@ -8,7 +8,6 @@ on:
 env:
   test: hello
   branch: ${{ github.head_ref || github.ref_name }}
-  is_main: ${{ '$branch' == 'main' }}
   parameter_key: /${{ vars.MY_NAME }}/$branch # kevin/(main|dev|stage)
   zip_name: test-$branch-shell.zip
 
@@ -25,8 +24,12 @@ jobs:
       - name: Echo test
         run: |
           echo $branch
-          echo $is_main
           echo $parameter_key
+
+      - name: Re-define group_name
+        if: $branch == 'main'
+        run: |
+          echo "hello world"
 
       - name: Echo env variables
         run: |
