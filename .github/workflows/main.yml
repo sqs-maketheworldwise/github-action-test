@@ -9,6 +9,7 @@ env:
   test: hello
   branch: ${{ github.head_ref || github.ref_name }}
   parameter_key: /${{ vars.MY_NAME }}/$branch # kevin/(main|dev|stage)
+  group_name: test
   zip_name: test-$branch-shell.zip
 
 jobs:
