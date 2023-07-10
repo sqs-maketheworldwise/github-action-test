@@ -15,7 +15,7 @@ on:
       - closed
 
 env:
-  test: hello
+  test: feat/tttt
   branch: ${{ github.head_ref || github.ref_name }}
   parameter_key: /${{ vars.MY_NAME }}/$branch # kevin/(main|dev|stage)
   group_name: test
