@@ -23,7 +23,6 @@ jobs:
 
       # echo ${ branch } not worked
       # echo ${{ branch }} not worked
-
       - name: Echo test
         run: |
           echo $branch
