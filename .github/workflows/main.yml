@@ -4,6 +4,7 @@ on:
       - main
       - dev
       - stage
+      - feat/test
 
 env:
   test: hello
