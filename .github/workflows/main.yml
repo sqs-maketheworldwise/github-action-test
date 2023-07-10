@@ -39,7 +39,7 @@ jobs:
       - name: Re-define group_name 1
         if: ${{ env.branch == 'main' }}
         run: |
-          echo "group_name=main-branch" >> $GITHUB_ENV
+          echo "group_name=prod" >> $GITHUB_ENV
 
       - name: Re-define group_name 2
         run: |
