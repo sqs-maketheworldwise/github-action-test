@@ -43,6 +43,6 @@ jobs:
           echo "testing=$(echo ${{ env.test }} | sed 's/.*\///' )" >> $GITHUB_ENV
 
       - name: test
-        if: ${{ github.event_name != 'push' && github.event_name == 'pull_request' && github.event.pull_request == 'true' }}
+        if: ${{ github.event_name == 'pull_request' && github.event.pull_request == 'true' }}
         run: |
           echo ${{ env.testing }}
