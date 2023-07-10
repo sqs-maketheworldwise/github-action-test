@@ -5,6 +5,14 @@ on:
       - dev
       - stage
       - feat/test
+  pull_request:
+    branches:
+      - main
+      - stg
+      - dev
+    types:
+      - opened
+      - closed
 
 env:
   test: hello
@@ -36,5 +44,11 @@ jobs:
       - name: Re-define group_name 2
         if: ${{ env.branch != 'main' }}
         run: |
-          echo 'group_name=${{ env.branch }} | sed 's/.*\///'' >> $GITHUB_ENV
+          echo 'group_name=${{ env.branch }}' | sed 's/.*\///' >> $GITHUB_ENV
+          echo ${{ env.group_name }}
+
+      - name: Re-define group_name 2
+        if: ${{ github.event_name == 'pull_request' && github.event.pull_request.merged == 'true' }}
+        run: |
+          echo 'group_name=${{ env.branch }}' | sed 's/.*\///' >> $GITHUB_ENV
           echo ${{ env.group_name }}
