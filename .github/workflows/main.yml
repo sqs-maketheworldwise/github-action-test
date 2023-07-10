@@ -43,8 +43,8 @@ jobs:
 
       - name: Re-define group_name 2
         run: |
-          hey=${{env.test}} | sed 's/.*\///'
-          echo 'test='$hey >> $GITHUB_ENV
+          hey=${{env.test}} | sed 's/.*\///' \
+          echo 'test='$hey \
           echo $test
 
       - name: Re-define group_name 3
