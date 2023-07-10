@@ -42,13 +42,12 @@ jobs:
           echo "group_name=main-branch" >> $GITHUB_ENV
 
       - name: Re-define group_name 2
-        if: ${{ env.branch != 'main' }}
         run: |
           echo 'group_name=${{ env.branch }} | sed 's/.*\///'' >> $GITHUB_ENV
           echo ${{ env.group_name }}
 
       - name: Re-define group_name 3
-        if: ${{ env.branch == 'stg' }}
+        if: ${{ env.branch != 'main' }}
         run: |
           echo 'group_name=${{ env.branch }} | sed 's/.*\///'' >> $GITHUB_ENV
           echo ${{ env.group_name }}
