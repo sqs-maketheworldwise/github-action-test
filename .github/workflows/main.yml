@@ -43,9 +43,9 @@ jobs:
 
       - name: Re-define group_name 2
         run: |
-          echo ${{ env.test }} | sed 's/.*\///' >> $hey
-          echo 'hell=${{ env.hey }}'' >> $GITHUB_ENV
-          echo ${{ env.hell }}
+          echo ${{ env.test }} | sed 's/.*\///' >> ${{ env.test }}
+          echo 'hey=${{ env.test }}'' >> $GITHUB_ENV
+          echo ${{ env.hey }}
 
       - name: Re-define group_name 3
         if: ${{ env.branch != 'main' }}
