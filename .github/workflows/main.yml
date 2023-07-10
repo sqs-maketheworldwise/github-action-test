@@ -43,6 +43,6 @@ jobs:
           echo "testing=$(echo ${{ env.test }} | sed 's/.*\///' )" >> $GITHUB_ENV
 
       - name: test
-        if: ${{ github.event.pull_request.action == 'closed' }}
+        if: ${{ env.branch == 'main' }}
         run: |
           echo ${{ env.testing }}
