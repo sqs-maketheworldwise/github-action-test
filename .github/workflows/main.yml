@@ -27,28 +27,13 @@ jobs:
           echo $branch
           echo $parameter_key
 
-      - name: Re-define group_name
+      - name: Re-define group_name 1
         if: ${{ env.branch == 'main' }}
         run: |
           echo "group_name=main-branch" >> $GITHUB_ENV
 
-      - name: Echo env variables
+      - name: Re-define group_name 2
+        if: ${{ env.branch != 'main' }}
         run: |
-          echo "Current branch: ${{ env.branch }}"
-          echo "Parameter key: ${{ env.parameter_key }}"
-          echo "Group Name: ${{ env.group_name }}"
-          echo "Zip name: ${{ env.zip_name }}"
-
-      - name: Run script
-        run: |
-          chmod +x ./scripts/log.sh
-          ./scripts/log.sh ${{ env.branch }}
-        shell: bash
-
-      - name: Commit and push
-        run: |
-          git add .
-          git config --global user.email "maketheworldwise@squares.ai"
-          git config --global user.name "sqs-maketheworldwise"
-          git commit -am "log"
-          git push
+          echo 'group_name=${{ env.branch | sed 's/.*\///' }}' >> $GITHUB_ENV
+          echo ${{ env.group_name }}
