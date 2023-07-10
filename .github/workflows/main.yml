@@ -47,8 +47,8 @@ jobs:
           echo 'group_name=${{ env.branch }} | sed 's/.*\///'' >> $GITHUB_ENV
           echo ${{ env.group_name }}
 
-      - name: Re-define group_name 2
-        if: ${{ github.event_name == 'pull_request' && github.event.pull_request.merged == 'true' }}
+      - name: Re-define group_name 3
+        if: ${{ env.branch == 'stg' }}
         run: |
           echo 'group_name=${{ env.branch }} | sed 's/.*\///'' >> $GITHUB_ENV
           echo ${{ env.group_name }}
